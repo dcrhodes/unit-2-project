@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export {
-  Album
+  Record
 }
 
 const reviewSchema = new mongoose.Schema({
@@ -16,7 +16,7 @@ const reviewSchema = new mongoose.Schema({
   timestamps: true
 })
 
-const albumSchema = new mongoose.Schema(
+const recordSchema = new mongoose.Schema(
   {
     artist: {
         type: String, 
@@ -48,4 +48,4 @@ const albumSchema = new mongoose.Schema(
   }
 )
 
-const Album = mongoose.model('Album', albumSchema)
+const Record = mongoose.model('Record', recordSchema)
