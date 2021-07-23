@@ -1,15 +1,30 @@
 import { Record } from '../models/record.js'
 
 export {
-  newMovie as new,
-  create,
-  index,
-  show,
-  createReview,
-  deleteRecord as delete,
-  edit,
-  update
+	newRecord as new,
+	create,
+	index,
+	show,
+	createReview,
+	deleteRecord as delete,
+	edit,
+	update
 }
+
+function newRecord(req, res) {
+	res.render('records/new')
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function update(req, res) {
 
@@ -36,6 +51,5 @@ function index(req, res) {
 function create(req, res) {
 }
 
-function newMovie(req, res) {
-}
+
 
