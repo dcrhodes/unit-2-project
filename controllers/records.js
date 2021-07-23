@@ -8,7 +8,7 @@ export {
 	createReview,
 	deleteRecord as delete,
 	edit,
-	update
+	update,
 }
 
 function newRecord(req, res) {

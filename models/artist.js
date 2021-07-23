@@ -13,7 +13,7 @@ const artistSchema = new mongoose.Schema(
     genre: String,
     yearsActive: Date,
     content: String,
-    albums: [albumSchema],
+    albums: [],
   },
   {
     timestamps: true,
