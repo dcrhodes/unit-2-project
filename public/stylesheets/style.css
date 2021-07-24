@@ -45,3 +45,14 @@ nav {
 #prime {
   width: 100%;
 }
+
+#formdiv {
+  margin-top: 100px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#list {
+  font-size: 20px;
+}

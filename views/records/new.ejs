@@ -1,61 +1,65 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<form>
+<div class="container bg-light" id="formdiv">
+<form action="/records" method="POST">
     <div class="row mb-3">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Artist</label>
+      <label class="col-sm-2 col-form-label">
+        Artist
+      </label>
       <div class="col-sm-10">
-        <input type="email" class="form-control-md" id="inputEmail3">
+        <input type="text" class="form-control-lg" name="artist">
       </div>
     </div>
     <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Album Title</label>
+      <label class="col-sm-2 col-form-label">Album Title</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control-md" id="inputPassword3">
+        <input type="text" class="form-control-lg" name="title">
       </div>
     </div>
     <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Release Year</label>
+        <label class="col-sm-2 col-form-label">Release Year</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control-md" id="inputPassword3">
+          <input type="text" class="form-control-lg" name="originalYear">
         </div>
       </div>
     <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Record Label</label>
+        <label class="col-sm-2 col-form-label">Record Label</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control-md" id="inputPassword3">
+          <input type="text" class="form-control-lg" name="label">
         </div>
       </div>
       <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Genre</label>
+        <label class="col-sm-2 col-form-label">Genre</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control-md" id="inputPassword3">
+          <input type="text" class="form-control-lg" name="genre">
         </div>
       </div>
     <fieldset class="row mb-3">
       <legend class="col-form-label col-sm-2 pt-0">Format</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
+          <input class="form-check-input" type="radio" name="format" value="12-inch" checked>
+          <label class="form-check-label" for="format" >
             12-inch
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
+          <input class="form-check-input" type="radio" name="format" value="10-inch">
+          <label class="form-check-label" for="format">
             10-inch
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-          <label class="form-check-label" for="gridRadios3">
+          <input class="form-check-input" type="radio" name="format" value="7-inch">
+          <label class="form-check-label" for="format">
             7-inch
           </label>
         </div>
       </div>
     </fieldset>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Add</button>
   </form>
+</div>
 
 <%- include('../partials/footer') %>

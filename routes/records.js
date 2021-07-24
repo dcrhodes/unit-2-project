@@ -10,13 +10,17 @@ export {
 // GET localhost:3000/records/new
 router.get('/new', recordsCtrl.new)
 
+// POST localhost:3000/records
+router.post('/', recordsCtrl.create)
 
-
-
-
-
-// GET localhost:3000/movies
+// GET localhost:3000/records
 router.get('/', recordsCtrl.index)
+
+
+
+
+
+
 
 // GET localhost:3000/movies/:id
 router.get('/:id', recordsCtrl.show)
@@ -24,8 +28,7 @@ router.get('/:id', recordsCtrl.show)
 // GET localhost:3000/movies/:id/edit
 router.get('/:id/edit', recordsCtrl.edit)
 
-// POST localhost:3000/movies
-router.post('/', recordsCtrl.create)
+
 
 // POST localhost:3000/movies/:id/reviews
 router.post('/:id/reviews', recordsCtrl.createReview)

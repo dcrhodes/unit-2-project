@@ -15,6 +15,28 @@ function newRecord(req, res) {
 	res.render('records/new')
 }
 
+function create(req, res) {
+	Record.create(req.body)
+	.then(record => {
+		res.redirect('/records/new')
+	})
+	.catch(error => {
+		console.log(error)
+		res.redirect('/records/new')
+	})
+}
+
+function index(req, res) {
+	Record.find({}, function(err, records) {
+	  res.render('records/index', {
+		records: records,
+		title: 'All Records'
+	  })
+	})
+  }
+
+
+
 
 
 
@@ -45,11 +67,9 @@ function show(req, res) {
 }
 
 
-function index(req, res) {
-}
 
-function create(req, res) {
-}
+
+
 
 
 

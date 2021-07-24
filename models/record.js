@@ -27,8 +27,8 @@ const recordSchema = new mongoose.Schema(
         required: true
     },
     originalYear: {
-        type: Date, 
-        min: 1889
+        type: Number, 
+        min: 1889,
     },
     repressYear: {
         type: Date, 

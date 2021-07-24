@@ -1,0 +1,37 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<div class="container bg-dark" id="formdiv">
+        <table class="table table-striped table-dark" id="list">
+          <thead>
+            <tr>
+              <th scope="col">Artist</th>
+              <th scope="col">Title</th>
+              <th scope="col">Released</th>
+              <th scope="col">Repressed</th>
+              <th scope="col">Label</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Format</th>
+              <th scope="col">Color</th>
+              <th scope="col">Reviews</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% records.forEach((record) => { %>
+            <tr>
+              <td><%= record.artist %></td>
+              <td><%= record.title %></td>
+              <td><%= record.originalYear %></td>
+              <td><%= record.repressYear %></td>
+              <td><%= record.label %></td>
+              <td><%= record.genre %></td>
+              <td><%= record.format %></td>
+              <td><%= record.color %></td> 
+              <td>0</td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+</div>
+
+<%- include('../partials/footer') %>
