@@ -8,7 +8,6 @@
               <th scope="col">Artist</th>
               <th scope="col">Title</th>
               <th scope="col">Released</th>
-              <th scope="col">Repressed</th>
               <th scope="col">Label</th>
               <th scope="col">Genre</th>
               <th scope="col">Format</th>
@@ -20,14 +19,13 @@
             <% records.forEach((record) => { %>
             <tr>
               <td><%= record.artist %></td>
-              <td><%= record.title %></td>
+              <td><a href="#" class="link-info"><%= record.title %></a></td>
               <td><%= record.originalYear %></td>
-              <td><%= record.repressYear %></td>
               <td><%= record.label %></td>
               <td><%= record.genre %></td>
               <td><%= record.format %></td>
               <td><%= record.color %></td> 
-              <td>0</td>
+              <td><a href="#" class="link-info">0</a></td>
             </tr>
             <% }) %>
           </tbody>

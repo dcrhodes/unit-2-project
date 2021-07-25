@@ -19,6 +19,7 @@ import('./config/passport.js')
 
 // require routes
 import { router as recordsRouter } from './routes/records.js'
+import { router as profilesRouter } from './routes/profiles.js'
 import { router as artistsRouter } from './routes/artists.js'
 import { router as labelsRouter } from './routes/labels.js'
 
@@ -61,6 +62,7 @@ app.use(passport.session())
 
 // router middleware
 app.use('/records', recordsRouter)
+app.use('/profiles', profilesRouter)
 app.use('/artists', artistsRouter)
 app.use('/labels', labelsRouter)
 app.use('/', indexRouter)

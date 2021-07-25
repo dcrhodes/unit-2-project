@@ -10,11 +10,17 @@ export {
 // GET localhost:3000/records/new
 router.get('/new', recordsCtrl.new)
 
+// GET localhost:3000/records
+router.get('/', recordsCtrl.index)
+
 // POST localhost:3000/records
 router.post('/', recordsCtrl.create)
 
-// GET localhost:3000/records
-router.get('/', recordsCtrl.index)
+// POST localhost:3000/records/search
+router.post('/search', recordsCtrl.search)
+
+
+
 
 
 
