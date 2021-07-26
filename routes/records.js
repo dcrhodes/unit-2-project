@@ -25,25 +25,14 @@ router.post('/search', recordsCtrl.search)
 // DELETE localhost:3000/records/:id
 router.delete('/:id', recordsCtrl.delete)
 
-
-
-
-
-
-
-
-// GET localhost:3000/movies/:id
-router.get('/:id', recordsCtrl.show)
-
-// GET localhost:3000/movies/:id/edit
+// GET localhost:3000/records/:id/edit
 router.get('/:id/edit', recordsCtrl.edit)
+
 
 
 
 // POST localhost:3000/movies/:id/reviews
 router.post('/:id/reviews', recordsCtrl.createReview)
-
-
 
 // PUT localhost:3000/movies/:id
 router.put('/:id', recordsCtrl.update)

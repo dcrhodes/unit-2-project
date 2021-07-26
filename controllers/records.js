@@ -119,21 +119,15 @@ function show(req, res) {
     })
   }
 
-// function search(req, res) {
-// 	Record.find({req.query.search})
-// 	.then(response => {
-// 		res.render('records/new', {
-// 			title: 'Search Results',
-// 			results: response.data.results
-// 		})
-// 	})
-// 	.catch(err => {
-// 	console.log(err)
-// 	res.redirect('/')
-// 	})
-// }
-
-
+function edit(req, res) {
+	Record.findById(req.params.id, function(error, record) {
+	  res.render('records/edit', {
+		record,
+		error, 
+		title: 'Edit Record'
+	  })
+	})
+  }
 
 
 
@@ -149,10 +143,6 @@ function show(req, res) {
 function update(req, res) {
 
 }
-
-function edit(req, res) {
-}
-
 
 
 
