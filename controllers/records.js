@@ -14,6 +14,7 @@ export {
 	edit,
 	update,
 	search,
+	zearch,
 }
 
 function newRecord(req, res) {
@@ -27,7 +28,7 @@ function create(req, res) {
 	})
 	.catch(error => {
 		console.log(error)
-		res.redirect('/records')
+		res.redirect('/error')
 	})
 }
 
@@ -44,11 +45,71 @@ function index(req, res) {
 
 function search(req, res){
 	console.log(req.body)
-	Record.find({}, (error, results) => {
-	console.log(results)
+	Record.find({ artist: req.body.artist })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+			record: results
+		})
 	})
-	res.redirect('/')
-}
+	.catch(error => {
+		console.log(error)
+		res.redirect('/error')
+	})
+  }
+
+
+
+function zearch(req, res) {
+	console.log(req.body)
+	Record.find({ artist: req.body.artist })
+	.then(artistResults => {
+	  Record.find({ title: req.body.title })
+	  .then(titleResults => {
+		Record.find({ label: req.body.label })
+		.then(labelResults => {
+		  Record.find({ genre: req.body.genre })
+		  .then(genreResults => {
+			console.log(artistResults)
+			console.log(titleResults)
+			console.log(labelResults)
+			console.log(genreResults)
+
+			res.render('records/search', {
+				record: artistResults,
+				record: titleResults,
+				record: labelResults,
+				record: genreResults,
+		  	})
+		  })
+		})
+	  })
+	})
+	.catch(error => {
+		console.log(error)
+		res.redirect('/error')
+	})
+  }
+
+
+
+
+
+
+
+function show(req, res) {
+    Record.findById(req.params.id)
+    .then(record => {
+      res.render('records/show', {
+        title: `${record.artist} - ${record.title}`,
+        record,
+      })
+    })
+    .catch(error => {
+      console.log(error)
+      res.redirect('/error')
+    })
+  }
 
 // function search(req, res) {
 // 	Record.find({req.query.search})
@@ -92,8 +153,7 @@ function createReview(req, res) {
 }
 
 
-function show(req, res) {
-}
+
 
 
 

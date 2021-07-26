@@ -1,15 +1,16 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.artist %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.title %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.originalYear %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.repressYear %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.label %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.genre %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.format %></h1>
-<h1 class="display-5 fw-bold text-white pt-2"><%= record.color %></h1>
+<h3 class="text-white">Artist: <%= record.artist %></h3>
+<h3 class="text-white">Title: <%= record.title %></h3>
+<h3 class="text-white">Released: <%= record.originalYear %></h3>
+<h3 class="text-white">Label: <%= record.label %></h3>
+<h3 class="text-white">Genre: <%= record.genre %></h3>
+<h3 class="text-white">Format: <%= record.format %></h3>
+<h3 class="text-white">Reviews:</h3>
 
-
+<form action="/records/<%= record._id %>?_method=DELETE" method="POST">
+    <button>Delete Record</button>
+  </form>
 
 <%- include('../partials/footer') %>

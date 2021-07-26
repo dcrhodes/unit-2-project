@@ -11,21 +11,31 @@
               <th scope="col">Label</th>
               <th scope="col">Genre</th>
               <th scope="col">Format</th>
-              <th scope="col">Color</th>
               <th scope="col">Reviews</th>
             </tr>
           </thead>
           <tbody>
             <% records.forEach((record) => { %>
             <tr>
-              <td><%= record.artist %></td>
-              <td><a href="#" class="link-info"><%= record.title %></a></td>
-              <td><%= record.originalYear %></td>
-              <td><%= record.label %></td>
+              <td>
+                <form action="/records/search" method="POST" class="d-flex mx-4">
+                  <input type="submit" name="artist" value="<%= record.artist %>">
+                </form>
+              </td>
+              <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+              <td>
+                <form action="/records/search" method="POST" class="d-flex mx-4">
+                  <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+                </form>
+              </td>
+              <td>
+                <form action="/records/search" method="POST" class="d-flex mx-4">
+                  <input type="submit" name="label" value="<%= record.label %>">
+                </form>
+              </td>
               <td><%= record.genre %></td>
               <td><%= record.format %></td>
-              <td><%= record.color %></td> 
-              <td><a href="#" class="link-info">0</a></td>
+              <td><a href="/records/<%= record._id %>" class="link-info">0</a></td>
             </tr>
             <% }) %>
           </tbody>
@@ -33,3 +43,5 @@
 </div>
 
 <%- include('../partials/footer') %>
+
+

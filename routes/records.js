@@ -13,6 +13,9 @@ router.get('/new', recordsCtrl.new)
 // GET localhost:3000/records
 router.get('/', recordsCtrl.index)
 
+// GET localhost:3000/records/show
+router.get('/:id', recordsCtrl.show)
+
 // POST localhost:3000/records
 router.post('/', recordsCtrl.create)
 

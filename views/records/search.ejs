@@ -1,0 +1,45 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<div class="container bg-dark" id="formdiv">
+    <table class="table table-striped table-dark" id="list">
+      <thead>
+        <tr>
+          <th scope="col">Artist</th>
+          <th scope="col">Title</th>
+          <th scope="col">Released</th>
+          <th scope="col">Label</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Format</th>
+          <th scope="col">Reviews</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% record.forEach((record) => { %>
+        <tr>
+          <td>
+            <form action="/records/search" method="POST" class="d-flex mx-4">
+              <input type="submit" name="artist" value="<%= record.artist %>">
+            </form>
+          </td>
+          <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+          <td>
+            <form action="/records/search" method="POST" class="d-flex mx-4">
+              <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+            </form>
+          </td>
+          <td>
+            <form action="/records/search" method="POST" class="d-flex mx-4">
+              <input type="submit" name="label" value="<%= record.label %>">
+            </form>
+          </td>
+          <td><%= record.genre %></td>
+          <td><%= record.format %></td>
+          <td><a href="/records/<%= record._id %>" class="link-info">0</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+
+<%- include('../partials/footer') %>

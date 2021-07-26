@@ -26,6 +26,7 @@ const recordSchema = new mongoose.Schema(
         type: String, 
         required: true
     },
+    cover: String,
     originalYear: {
         type: Number, 
         min: 1889,
@@ -40,7 +41,7 @@ const recordSchema = new mongoose.Schema(
         type: String, 
         enum: ['12-inch', '10-inch', '7-inch']
     },
-    color: String,
+    colors: String,
     reviews: [reviewSchema],
 },
   {

@@ -8,3 +8,28 @@
             </button>
           </a>
         <% } %>
+
+
+
+
+        function search(req, res) {
+  ThingA.find({ propertyName: req.body.search })
+  .then(A_things => {
+    ThingB.find({ propertyName: req.body.search })
+    .then(B_things => {
+      ThingC.find({ propertyName: req.body.search })
+      .then(C_things => {
+        res.render('whatever', {
+          A_things,
+          B_things,
+          C_things
+        })
+      })
+    })
+  })
+}
+
+
+
+
+
