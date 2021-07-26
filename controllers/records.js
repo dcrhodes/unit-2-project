@@ -141,7 +141,9 @@ function edit(req, res) {
 
 
 function update(req, res) {
-
+Record.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(error, record) {
+	res.redirect(`/records/${record._id}`)
+})
 }
 
 
