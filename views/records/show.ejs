@@ -9,8 +9,11 @@
 <h3 class="text-white">Format: <%= record.format %></h3>
 <h3 class="text-white">Reviews:</h3>
 
+<a href="/records/<%= record._id %>/edit">
+    <button>Edit Record</button>
+  </a>
 <form action="/records/<%= record._id %>?_method=DELETE" method="POST">
     <button>Delete Record</button>
-  </form>
+</form>
 
 <%- include('../partials/footer') %>

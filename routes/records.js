@@ -22,7 +22,8 @@ router.post('/', recordsCtrl.create)
 // POST localhost:3000/records/search
 router.post('/search', recordsCtrl.search)
 
-
+// DELETE localhost:3000/records/:id
+router.delete('/:id', recordsCtrl.delete)
 
 
 
@@ -42,8 +43,7 @@ router.get('/:id/edit', recordsCtrl.edit)
 // POST localhost:3000/movies/:id/reviews
 router.post('/:id/reviews', recordsCtrl.createReview)
 
-// DELETE localhost:3000/movies/:id
-router.delete('/:id', recordsCtrl.delete)
+
 
 // PUT localhost:3000/movies/:id
 router.put('/:id', recordsCtrl.update)

@@ -93,7 +93,15 @@ function zearch(req, res) {
 
 
 
-
+  function deleteRecord(req, res) {
+	Record.findByIdAndDelete(req.params.id, function(error, record) {
+	res.redirect('/records')
+	})
+  	.catch(error => {
+	console.log(error)
+	res.redirect('/error')
+	})
+}
 
 
 
@@ -145,8 +153,7 @@ function update(req, res) {
 function edit(req, res) {
 }
 
-function deleteRecord(req, res) {
-}
+
 
 
 function createReview(req, res) {
