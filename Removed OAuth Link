@@ -92,3 +92,10 @@
       </div>
 </form>
 
+
+
+
+
+
+
+<a class="nav-link mx-4" href="/profiles/<%= user.profile._id %>">Collection</a>
