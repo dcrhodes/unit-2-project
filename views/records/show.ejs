@@ -9,11 +9,14 @@
 <h3 class="text-white">Format: <%= record.format %></h3>
 <h3 class="text-white">Reviews:</h3>
 
+<% if (!record?.collectedBy.some(profile => profile._id.equals(user.profile._id))) { %>
 
-<button>Add to Collection</button><br>
+<form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="">
+  <button>Add to Collection</button><br>
+</form>
+<% } %>
+
 <button>Add to Wishlist</button><br>
-
-
 
 <a href="/records/<%= record._id %>/edit">
     <button>Edit Record</button>

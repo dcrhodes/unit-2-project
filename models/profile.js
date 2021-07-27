@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+const Schema = mongoose.Schema
 
 export {
   Profile
@@ -9,7 +10,7 @@ const profileSchema = new mongoose.Schema({
   avatar: String,
   location: String,
   bio: String,
-  shelf: String,
+  shelf: [{ type: Schema.Types.ObjectId, ref: "Record" }],
   wishlist: String,
   reviewsLeft: String,
 }, {

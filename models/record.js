@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+const Schema = mongoose.Schema
 
 export {
   Record
@@ -42,6 +43,8 @@ const recordSchema = new mongoose.Schema(
         enum: ['12-inch', '10-inch', '7-inch']
     },
     colors: String,
+    collectedBy: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
+    wishlistBy: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
     reviews: [reviewSchema],
 },
   {

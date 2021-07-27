@@ -5,4 +5,8 @@
 
 <h1 class="display-5 fw-bold text-white pt-2"><%= profile.name %>'s Collection</h1>
 
+<% profile.shelf.forEach(item => { %> 
+<div class="text-white"><%= item.artist %> - <%= item.title %> </div>
+<% }) %> 
+
 <%- include('../partials/footer') %>

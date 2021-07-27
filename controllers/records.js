@@ -1,5 +1,6 @@
 import { Record } from '../models/record.js'
 import { Profile } from '../models/profile.js'
+import { User } from '../models/user.js'
 
 import axios from 'axios'
 
@@ -17,6 +18,7 @@ export {
 	artistClickSearch,
 	labelClickSearch,
 	yearClickSearch,
+	addToCollection,
 }
 
 function newRecord(req, res) {
@@ -186,3 +188,14 @@ function createReview(req, res) {
 	})
   }
 
+function addToCollection(req, res) {
+	Profile.findById(req.user.profile._id)
+	.then(profile => {
+		console.log(profile)
+	  profile.shelf.push(req.params.id)
+	  profile.save()
+	  .then(()=> {
+		res.redirect(`/records/${req.params.id}`)
+	  })
+	})
+  }

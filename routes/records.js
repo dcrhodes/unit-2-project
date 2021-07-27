@@ -21,6 +21,8 @@ router.post('/', recordsCtrl.create)
 
 // POST localhost:3000/records/search
 router.post('/search', recordsCtrl.search)
+router.post('/:id/addToCollection', isLoggedIn, recordsCtrl.addToCollection)
+
 
 router.post('/artistClickSearch', recordsCtrl.artistClickSearch)
 router.post('/labelClickSearch', recordsCtrl.labelClickSearch)
