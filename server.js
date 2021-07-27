@@ -7,6 +7,8 @@ import session from 'express-session'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
+import { passUserToView } from './middleware/middleware.js'
+import cors from 'cors'
 
 // create the express app
 const app = express()
@@ -34,6 +36,7 @@ app.set(
 app.set('view engine', 'ejs')
 
 // middleware
+app.use(cors())
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
@@ -59,6 +62,9 @@ app.use(
 // passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// custom middleware
+app.use(passUserToView)
 
 // router middleware
 app.use('/records', recordsRouter)

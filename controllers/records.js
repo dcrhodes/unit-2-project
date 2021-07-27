@@ -14,7 +14,9 @@ export {
 	edit,
 	update,
 	search,
-	zearch,
+	artistClickSearch,
+	labelClickSearch,
+	yearClickSearch,
 }
 
 function newRecord(req, res) {
@@ -43,7 +45,7 @@ function index(req, res) {
   }
 
 
-function search(req, res){
+function artistClickSearch(req, res){
 	console.log(req.body)
 	Record.find({ artist: req.body.artist })
 	.then(results => {
@@ -58,38 +60,78 @@ function search(req, res){
 	})
   }
 
-
-
-function zearch(req, res) {
+  function labelClickSearch(req, res){
 	console.log(req.body)
-	Record.find({ artist: req.body.artist })
-	.then(artistResults => {
-	  Record.find({ title: req.body.title })
-	  .then(titleResults => {
-		Record.find({ label: req.body.label })
-		.then(labelResults => {
-		  Record.find({ genre: req.body.genre })
-		  .then(genreResults => {
-			console.log(artistResults)
-			console.log(titleResults)
-			console.log(labelResults)
-			console.log(genreResults)
-
-			res.render('records/search', {
-				record: artistResults,
-				record: titleResults,
-				record: labelResults,
-				record: genreResults,
-		  	})
-		  })
+	Record.find({ label: req.body.label })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+			record: results
 		})
-	  })
 	})
 	.catch(error => {
 		console.log(error)
 		res.redirect('/error')
 	})
   }
+
+  function yearClickSearch(req, res){
+	console.log(req.body)
+	Record.find({ originalYear: req.body.originalYear })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+			record: results
+		})
+	})
+	.catch(error => {
+		console.log(error)
+		res.redirect('/error')
+	})
+  }
+
+  
+function search(req, res){
+	if (req.body.searchParam === "artist") {
+		Record.find({ artist: req.body.searchContent })
+		.then(results => {
+			console.log(results)
+			res.render('records/search', {
+			record: results
+		})
+	})
+	.catch(error => {
+		console.log(error)
+		res.redirect('/error')
+	})
+} else if (req.body.searchParam === "title") {
+	Record.find({ title: req.body.searchContent })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+		record: results
+	})
+})
+.catch(error => {
+	console.log(error)
+	res.redirect('/error')
+})
+} else if (req.body.searchParam === "label") {
+	Record.find({ label: req.body.searchContent })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+		record: results
+	})
+})
+.catch(error => {
+	console.log(error)
+	res.redirect('/error')
+})
+}
+}
+
+
 
 
 
@@ -129,35 +171,18 @@ function edit(req, res) {
 	})
   }
 
-
-
-
-
-
-
-
-
-
-
-
 function update(req, res) {
 Record.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(error, record) {
 	res.redirect(`/records/${record._id}`)
 })
 }
 
-
-
 function createReview(req, res) {
-}
-
-
-
-
-
-
-
-
-
-
+	Record.findById(req.params.id, function(error, record) {
+	  record.reviews.push(req.body)
+	  record.save(function(error) {
+		res.redirect(`/records/${record._id}`)
+	  })
+	})
+  }
 

@@ -11,6 +11,20 @@
 
 
 
+        <% if (user) { %>
+          <a href="/auth/logout">
+            <button type="submit" class="btn btn-outline-light mx-4 mb-1">Logout</button>
+          </a>
+        <% } else { %>
+          <a href="/auth/google" class="siwg-link">
+            <button type="submit" class="siwg btn btn-outline-light mx-4 mb-1">Sign-in
+            </button>
+          </a>
+        <% } %>
+
+
+
+
 
         function search(req, res) {
   ThingA.find({ propertyName: req.body.search })
