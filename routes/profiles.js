@@ -14,3 +14,6 @@ router.get('/', profilesCtrl.index)
 
 // GET localhost:3000/profiles/:id
 router.get('/:id', profilesCtrl.show)
+
+router.get('/:id/edit', profilesCtrl.edit)
+router.put('/:id', profilesCtrl.update)

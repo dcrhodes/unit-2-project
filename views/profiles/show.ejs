@@ -1,13 +1,22 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1 class="display-5 fw-bold text-white pt-2"><%= profile.name %></h1>
+<h3 class="fw-bold text-white pt-2"><%= profile.name %></h3>
+<h3 class="fw-bold text-white pt-2"><%= profile.location %></h3>
+<h3 class="fw-bold text-white pt-2"><%= profile.bio %></h3>
 
-<h1 class="display-5 fw-bold text-white pt-2"><%= profile.name %>'s Collection</h1>
+<% if (user) { %>
+<a href="/profiles/<%= profile._id %>/edit">
+  <button>Edit Profile</button>
+</a>
+<% } %>
+
+<h3 class="fw-bold text-white pt-2"><%= profile.name %>'s Collection</h3>
 
 
 <div class="container bg-dark" id="formdiv">
     <table class="table table-striped table-dark" id="list">
+      
       <thead>
         <tr>
           <th scope="col">Artist</th>
