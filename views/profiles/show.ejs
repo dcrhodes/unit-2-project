@@ -5,7 +5,7 @@
 <h3 class="fw-bold text-white pt-2"><%= profile.location %></h3>
 <h3 class="fw-bold text-white pt-2"><%= profile.bio %></h3>
 
-<% if (user) { %>
+<% if (user.profile._id.toString() === profile._id.toString()) { %>
 <a href="/profiles/<%= profile._id %>/edit">
   <button>Edit Profile</button>
 </a>
@@ -24,9 +24,10 @@
           <th scope="col">Released</th>
           <th scope="col">Label</th>
           <th scope="col">Genre</th>
-          <th scope="col">Format</th>
           <th scope="col">Reviews</th>
+          <% if (user.profile._id.toString() === profile._id.toString()) { %>
           <th scope="col">Remove</th>
+          <% } %> 
         </tr>
       </thead>
       <tbody>
@@ -34,36 +35,42 @@
         <tr>
           <td>
             <form action="/records/artistClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="artist" value="<%= record.artist %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="artist" value="<%= record.artist %>">
             </form>
           </td>
-          <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+          <td><a href="/records/<%= record._id %>" class="link-info">
+            <button class="remove_button_css btn-link link-info">
+            <%= record.title %></a></button>
+          </td>
           <td>
             <form action="/records/yearClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="originalYear" value="<%= record.originalYear %>">
             </form>
           </td>
           <td>
             <form action="/records/labelClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="label" value="<%= record.label %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="label" value="<%= record.label %>">
             </form>
           </td>
           <td>
             <form action="/records/genreClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="genre" value="<%= record.genre %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="genre" value="<%= record.genre %>">
             </form>
           </td>
-          <td><%= record.format %></td>
           <td>
             <a href="/records/<%= record._id %>" class="link-info">
+              <button class="remove_button_css btn-link link-info">
                 <%= record.reviews.length %>
+                </button>
             </a>
             </td>
+            <% if (user.profile._id.toString() === profile._id.toString()) { %>
             <td>
               <form class="" action="/records/<%= record._id %>/removeFromCollection" method="POST" name="recordId">
                 <button>Remove</button><br>
               </form>
             </td>
+            <% } %> 
         </tr>
         <% }) %>
       </tbody>
@@ -80,9 +87,10 @@
           <th scope="col">Released</th>
           <th scope="col">Label</th>
           <th scope="col">Genre</th>
-          <th scope="col">Format</th>
           <th scope="col">Reviews</th>
+          <% if (user.profile._id.toString() === profile._id.toString()) { %>
           <th scope="col">Remove</th>
+          <% } %> 
         </tr>
       </thead>
       <tbody>
@@ -90,36 +98,43 @@
         <tr>
           <td>
             <form action="/records/artistClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="artist" value="<%= record.artist %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="artist" value="<%= record.artist %>">
             </form>
           </td>
-          <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+          <td>
+            <a href="/records/<%= record._id %>" class="link-info">
+            <button class="remove_button_css btn-link link-info"><%= record.title %></button>
+          </a>
+        </td>
           <td>
             <form action="/records/yearClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="originalYear" value="<%= record.originalYear %>">
             </form>
           </td>
           <td>
             <form action="/records/labelClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="label" value="<%= record.label %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="label" value="<%= record.label %>">
             </form>
           </td>
           <td>
             <form action="/records/genreClickSearch" method="POST" class="d-flex mx-4">
-              <input type="submit" name="genre" value="<%= record.genre %>">
+              <input type="submit" class="remove_button_css btn-link link-info" name="genre" value="<%= record.genre %>">
             </form>
           </td>
-          <td><%= record.format %></td>
           <td>
+            <button class="remove_button_css btn-link link-info">
             <a href="/records/<%= record._id %>" class="link-info">
                 <%= record.reviews.length %>
             </a>
+            </button>
             </td>
+            <% if (user.profile._id.toString() === profile._id.toString()) { %>
             <td>
               <form class="" action="/records/<%= record._id %>/removeFromWishlist" method="POST" name="recordId">
                 <button>Remove</button><br>
               </form>
             </td>
+            <% } %> 
         </tr>
         <% }) %>
       </tbody>

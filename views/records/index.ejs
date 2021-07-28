@@ -5,6 +5,8 @@
   <p><center><h3 class="text-white">Can't find something?  <a href="/records/new" class="link-info">Add it to our database!</a></h3></center></p>
 </div>
 
+
+
 <div class="container bg-dark" id="formdiv">
         <table class="table table-striped table-dark" id="list">
           <thead>
@@ -14,7 +16,6 @@
               <th scope="col">Released</th>
               <th scope="col">Label</th>
               <th scope="col">Genre</th>
-              <th scope="col">Format</th>
               <th scope="col">Reviews</th>
               <th scope="col">Collect</th>
               <th scope="col">Wishlist</th>
@@ -25,29 +26,28 @@
             <tr>
               <td>
                 <form action="/records/artistClickSearch" method="POST" class="d-flex mx-4">
-                  <input type="submit" name="artist" value="<%= record.artist %>">
+                  <input class="remove_button_css btn-link link-info" type="submit" name="artist" value="<%= record.artist %>">
                 </form>
               </td>
-              <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+              <td><a href="/records/<%= record._id %>"><button class="remove_button_css btn-link link-info"><%= record.title %></button></a></td>
               <td>
                 <form action="/records/yearClickSearch" method="POST" class="d-flex mx-4">
-                  <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+                  <input class="remove_button_css btn-link link-info" type="submit" name="originalYear" value="<%= record.originalYear %>">
                 </form>
               </td>
               <td>
                 <form action="/records/labelClickSearch" method="POST" class="d-flex mx-4">
-                  <input type="submit" name="label" value="<%= record.label %>">
+                  <input type="submit" class="remove_button_css btn-link link-info" name="label" value="<%= record.label %>">
                 </form>
               </td>
               <td>
                 <form action="/records/genreClickSearch" method="POST" class="d-flex mx-4">
-                  <input type="submit" name="genre" value="<%= record.genre %>">
+                  <input type="submit" class="remove_button_css btn-link link-info" name="genre" value="<%= record.genre %>">
                 </form>
               </td>
-              <td><%= record.format %></td>
-              <td><a href="/records/<%= record._id %>" class="link-info">
+              <td><button class="remove_button_css btn-link"><a href="/records/<%= record._id %>" class="link-info">
                 <%= record.reviews.length %>
-              </a></td>
+              </a></button></td>
               <td>
                   <form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="recordId">
                     <button>Collect</button><br>
@@ -55,13 +55,16 @@
               </td>
               <td>
                   <form class="" action="/records/<%= record._id %>/addToWishlist" method="POST" name="recordId">
-                    <button>Wishlist</button><br>
+                      <button>Wishlist</button><br>
                   </form>
               </td>
             </tr>
             <% }) %>
           </tbody>
         </table>
+        <script>
+          $('#sortTable').DataTable();
+          </script>
 </div>
 
 <%- include('../partials/footer') %>
