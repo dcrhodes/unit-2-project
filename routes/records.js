@@ -23,7 +23,7 @@ router.post('/', recordsCtrl.create)
 router.post('/search', recordsCtrl.search)
 router.post('/:id/addToCollection', isLoggedIn, recordsCtrl.addToCollection)
 
-
+router.post('/genreClickSearch', recordsCtrl.genreClickSearch)
 router.post('/artistClickSearch', recordsCtrl.artistClickSearch)
 router.post('/labelClickSearch', recordsCtrl.labelClickSearch)
 router.post('/yearClickSearch', recordsCtrl.yearClickSearch)

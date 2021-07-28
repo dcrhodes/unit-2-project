@@ -50,7 +50,7 @@ app.use(
 // session middleware
 app.use(
   session({
-    secret: 'potato',
+    secret: 'process.env.SESSION_SECRET',
     resave: false,
     saveUninitialized: false,
     cookie: {

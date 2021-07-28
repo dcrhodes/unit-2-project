@@ -15,6 +15,7 @@ export {
 	edit,
 	update,
 	search,
+	genreClickSearch,
 	artistClickSearch,
 	labelClickSearch,
 	yearClickSearch,
@@ -92,6 +93,21 @@ function artistClickSearch(req, res){
 	})
   }
 
+  function genreClickSearch(req, res){
+	console.log(req.body)
+	Record.find({ genre: req.body.genre })
+	.then(results => {
+		console.log(results)
+		res.render('records/search', {
+			record: results
+		})
+	})
+	.catch(error => {
+		console.log(error)
+		res.redirect('/error')
+	})
+  }
+
   
 function search(req, res){
 	if (req.body.searchParam === "artist") {
@@ -100,38 +116,51 @@ function search(req, res){
 			console.log(results)
 			res.render('records/search', {
 			record: results
+			})
 		})
-	})
-	.catch(error => {
-		console.log(error)
-		res.redirect('/error')
-	})
-} else if (req.body.searchParam === "title") {
-	Record.find({ title: req.body.searchContent })
-	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-		record: results
-	})
-})
-.catch(error => {
-	console.log(error)
-	res.redirect('/error')
-})
-} else if (req.body.searchParam === "label") {
-	Record.find({ label: req.body.searchContent })
-	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-		record: results
-	})
-})
-.catch(error => {
-	console.log(error)
-	res.redirect('/error')
-})
+		.catch(error => {
+			console.log(error)
+			res.redirect('/error')
+		})
+	} else if (req.body.searchParam === "title") {
+		Record.find({ title: req.body.searchContent })
+		.then(results => {
+			console.log(results)
+			res.render('records/search', {
+			record: results
+			})
+		})
+		.catch(error => {
+			console.log(error)
+			res.redirect('/error')
+		})
+	} else if (req.body.searchParam === "label") {
+		Record.find({ label: req.body.searchContent })
+		.then(results => {
+			console.log(results)
+			res.render('records/search', {
+			record: results
+		})
+		})
+		.catch(error => {
+			console.log(error)
+			res.redirect('/error')
+		})
+	} else if (req.body.searchParam === "genre") {
+		Record.find({ genre: req.body.searchContent })
+		.then(results => {
+			console.log(results)
+			res.render('records/search', {
+			record: results
+		})
+		})
+		.catch(error => {
+			console.log(error)
+			res.redirect('/error')
+		})
+	}
 }
-}
+
 
 
 

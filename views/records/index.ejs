@@ -16,6 +16,7 @@
               <th scope="col">Genre</th>
               <th scope="col">Format</th>
               <th scope="col">Reviews</th>
+              <th scope="col">Add</th>
             </tr>
           </thead>
           <tbody>
@@ -37,11 +38,20 @@
                   <input type="submit" name="label" value="<%= record.label %>">
                 </form>
               </td>
-              <td><%= record.genre %></td>
+              <td>
+                <form action="/records/genreClickSearch" method="POST" class="d-flex mx-4">
+                  <input type="submit" name="genre" value="<%= record.genre %>">
+                </form>
+              </td>
               <td><%= record.format %></td>
               <td><a href="/records/<%= record._id %>" class="link-info">
                 <%= record.reviews.length %>
               </a></td>
+              <td>
+                <form>
+                  <button>Add</button>
+                </form>
+              </td>
             </tr>
             <% }) %>
           </tbody>
