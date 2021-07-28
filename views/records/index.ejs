@@ -16,7 +16,8 @@
               <th scope="col">Genre</th>
               <th scope="col">Format</th>
               <th scope="col">Reviews</th>
-              <th scope="col">Add</th>
+              <th scope="col">Collect</th>
+              <th scope="col">Wishlist</th>
             </tr>
           </thead>
           <tbody>
@@ -48,9 +49,14 @@
                 <%= record.reviews.length %>
               </a></td>
               <td>
-                <form>
-                  <button>Add</button>
-                </form>
+                  <form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="recordId">
+                    <button>Collect</button><br>
+                  </form>
+              </td>
+              <td>
+                  <form class="" action="/records/<%= record._id %>/addToWishlist" method="POST" name="recordId">
+                    <button>Wishlist</button><br>
+                  </form>
               </td>
             </tr>
             <% }) %>

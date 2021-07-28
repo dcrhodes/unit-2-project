@@ -20,6 +20,7 @@ export {
 	labelClickSearch,
 	yearClickSearch,
 	addToCollection,
+	addToWishlist,
 }
 
 function newRecord(req, res) {
@@ -221,6 +222,17 @@ function addToCollection(req, res) {
 	Profile.findById(req.user.profile._id)
 	.then(profile => {
 	  profile.shelf.push(req.params.id)
+	  profile.save()
+	  .then(()=> {
+		res.redirect(`/records/${req.params.id}`)
+	  })
+	})
+  }
+
+  function addToWishlist(req, res) {
+	Profile.findById(req.user.profile._id)
+	.then(profile => {
+	  profile.wishlist.push(req.params.id)
 	  profile.save()
 	  .then(()=> {
 		res.redirect(`/records/${req.params.id}`)

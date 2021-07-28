@@ -22,6 +22,7 @@ function index(req, res) {
   function show(req, res) {
     Profile.findById(req.params.id)
     .populate('shelf')
+    .populate('wishlist')
     .then(profile => {
       res.render('profiles/show', {
         title: `${profile.name}'s Collection`,

@@ -11,7 +11,7 @@ const profileSchema = new mongoose.Schema({
   location: String,
   bio: String,
   shelf: [{ type: Schema.Types.ObjectId, ref: "Record" }],
-  wishlist: String,
+  wishlist: [{ type: Schema.Types.ObjectId, ref: "Record" }],
   reviewsLeft: String,
 }, {
   timestamps: true
