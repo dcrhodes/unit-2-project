@@ -191,7 +191,6 @@ function createReview(req, res) {
 function addToCollection(req, res) {
 	Profile.findById(req.user.profile._id)
 	.then(profile => {
-		console.log(profile)
 	  profile.shelf.push(req.params.id)
 	  profile.save()
 	  .then(()=> {

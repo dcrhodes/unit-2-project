@@ -5,8 +5,54 @@
 
 <h1 class="display-5 fw-bold text-white pt-2"><%= profile.name %>'s Collection</h1>
 
-<% profile.shelf.forEach(item => { %> 
-<div class="text-white"><%= item.artist %> - <%= item.title %> </div>
-<% }) %> 
+
+<div class="container bg-dark" id="formdiv">
+    <table class="table table-striped table-dark" id="list">
+      <thead>
+        <tr>
+          <th scope="col">Artist</th>
+          <th scope="col">Title</th>
+          <th scope="col">Released</th>
+          <th scope="col">Label</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Format</th>
+          <th scope="col">Reviews</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% profile.shelf.forEach((record) => { %>
+        <tr>
+          <td>
+            <form action="/records/artistClickSearch" method="POST" class="d-flex mx-4">
+              <input type="submit" name="artist" value="<%= record.artist %>">
+            </form>
+          </td>
+          <td><a href="/records/<%= record._id %>" class="link-info"><%= record.title %></a></td>
+          <td>
+            <form action="/records/yearClickSearch" method="POST" class="d-flex mx-4">
+              <input type="submit" name="originalYear" value="<%= record.originalYear %>">
+            </form>
+          </td>
+          <td>
+            <form action="/records/labelClickSearch" method="POST" class="d-flex mx-4">
+              <input type="submit" name="label" value="<%= record.label %>">
+            </form>
+          </td>
+          <td><%= record.genre %></td>
+          <td><%= record.format %></td>
+          <td>
+            <a href="/records/<%= record._id %>" class="link-info">
+                <%= record.reviews.length %>
+            </a>
+            </td>
+            <td>
+                <form action=""><button>Remove </button></form>
+            </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
 
 <%- include('../partials/footer') %>

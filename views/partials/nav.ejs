@@ -16,18 +16,18 @@
           </li>
           <% if (user) { %> 
           <li class="nav-item">
-            <a class="nav-link mx-4" href="/profiles/<%= user.profile._id %>">Collection</a>
-          </li>
-          <% } %> 
-          <li class="nav-item">
             <a class="nav-link mx-4" href="/records">All Records</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-4" href="/profiles">All Profiles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link mx-4" href="/records/new">Add Records</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="/profiles/<%= user.profile._id %>">Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4" href="/profiles">All Profiles</a>
+          </li>
+          <% } %> 
         </ul>
         
         <form action="/records/search" method="POST" class="d-flex mx-4">
