@@ -21,6 +21,8 @@ export {
 	yearClickSearch,
 	addToCollection,
 	addToWishlist,
+	removeFromCollection,
+	removeFromWishlist,
 }
 
 function newRecord(req, res) {
@@ -235,7 +237,29 @@ function addToCollection(req, res) {
 	  profile.wishlist.push(req.params.id)
 	  profile.save()
 	  .then(()=> {
-		res.redirect(`/records/${req.params.id}`)
+		res.redirect(`/profiles/${req.params.id}`)
 	  })
+	})
+  }
+
+function removeFromCollection(req, res) {
+	Profile.findById(req.user.profile._id)
+	.then(profile => {
+		profile.shelf.remove(req.params.id)
+		profile.save()
+		.then(()=> {
+		res.redirect(`/profiles/${req.user.profile._id}`)
+		})
+	})
+  }
+
+function removeFromWishlist(req, res) {
+	Profile.findById(req.user.profile._id)
+	.then(profile => {
+		profile.wishlist.remove(req.params.id)
+		profile.save()
+		.then(()=> {
+		res.redirect(`/profiles/${req.user.profile._id}`)
+		})
 	})
   }

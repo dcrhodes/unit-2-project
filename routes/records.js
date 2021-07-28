@@ -22,7 +22,10 @@ router.post('/', recordsCtrl.create)
 // POST localhost:3000/records/search
 router.post('/search', recordsCtrl.search)
 router.post('/:id/addToCollection', isLoggedIn, recordsCtrl.addToCollection)
+router.post('/:id/removeFromCollection', isLoggedIn, recordsCtrl.removeFromCollection)
 router.post('/:id/addToWishlist', isLoggedIn, recordsCtrl.addToWishlist)
+router.post('/:id/removeFromWishlist', isLoggedIn, recordsCtrl.removeFromWishlist)
+
 
 
 router.post('/genreClickSearch', recordsCtrl.genreClickSearch)
