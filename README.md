@@ -4,7 +4,9 @@ VNL is database application for collectors and enthusiasts of vinyl records.  Us
 I built this application to be a centralized way for collectors of independent music to keep track of their collections, and eventually be able to be a social network to interact with other enthusiasts and buy, sell, or trade those records we've all been missing from our collections. I'm an avid collector and former independent label owner myself, but have found some lacking features with other well-known record collection communities. It's frustrating to track down rare independent releases, and VNL intends to focus on the independent community and enthusiasts of fringe or niche corners of the music world.
 
 ## Getting Started:
-<https://vnl-project.herokuapp.com/>
+Heroku Deployment: <https://vnl-project.herokuapp.com/>
+
+Trello Board: <https://trello.com/b/DRPYGbsx/vnl-project>
 
 Upon loading, an unregistered user is limited in their interaction with the applications.  They can search the database for specific terms using the search feature located on the right side of the navigation bar.  If the user logs in with their Google account, a profile is automatically registered for them, and they are free to utlize the rest of the application.
 
@@ -62,3 +64,4 @@ I learned a lot through building this application, and personally do not feel li
 
 ## Credits:
 All album images and artwork are properties of their respective trademark holders, and only used within this application for non-commmercial demonstrative or educational purposes.
+
