@@ -16,7 +16,7 @@
         <tbody>
             <% profiles.forEach((profile) => { %>
             <tr>
-                <td><img class="img-fluid" src="<%= profile.avatar %>"></td>
+                <td><img class="img-fluid" src="<%= profile.avatar %>" style="width: 100px;"></td>
                 <td><a href="/profiles/<%= profile._id %>"><%= profile.name %></a></td>
                 <td><%= profile.location %></td>
                 <td><%= profile.createdAt.toLocaleDateString() %></td>

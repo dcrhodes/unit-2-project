@@ -3,30 +3,40 @@
 
 <h1 class="text-white"><%= title %></h3>
 
-<div class="container bg-light" id="formdiv">
+<div class="container bg-dark text-white fs-5" id="formdiv">
     <form action="/profiles/<%= profile._id %>?_method=PUT" method="POST">
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label">
             Name
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-lg" name="name" value="<%= profile.name %>">
+            <input type="text" class="form-control-lg" name="name" value="<%= profile.name %>" style="width: 250px;" required>
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label">Location</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-lg" name="location" value="<%= profile.location %>">
+            <input type="text" class="form-control-lg" name="location" value="<%= profile.location %>" style="width: 250px;">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">Avatar URL</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control-lg" name="avatar" value="<%= profile.avatar %>" style="width: 250px;">
           </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Bio</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control-lg" name="bio" value="<%= profile.bio %>">
+              <textarea rows="5"  name="bio" style="width: 250px;">
+                <%= profile.bio %>
+              </textarea>
             </div>
           </div>
         
-        <button type="submit" class="btn btn-primary">Confirm</button>
+        <button type="submit" class="btn btn-light profilebtn" id="editsubmit">
+          Confirm
+        </button>
       </form>
     </div>
 
