@@ -36,7 +36,10 @@ const recordSchema = new mongoose.Schema(
         type: Date, 
         min: 1889
     },
-    label: String,
+    label: {
+      type: String,
+      default: '/Users/damienrhodes/code/sei/projects/unit-2-project/public/images/genericrecord.png'
+    },
     genre: String,
     format: {
         type: String, 

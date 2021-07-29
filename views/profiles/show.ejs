@@ -1,22 +1,43 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h3 class="fw-bold text-white pt-2"><%= profile.name %></h3>
-<h3 class="fw-bold text-white pt-2"><%= profile.location %></h3>
-<h3 class="fw-bold text-white pt-2"><%= profile.bio %></h3>
 
-<% if (user.profile._id.toString() === profile._id.toString()) { %>
-<a href="/profiles/<%= profile._id %>/edit">
-  <button>Edit Profile</button>
-</a>
-<% } %>
+<div class="container mt-5 text-white">
+  <div class="row">
+    <div class="col-4">
+      <img src="<%= profile.avatar %> " class="img-fluid" style="width: 250px;" alt="Album Cover">
+    </div>
+    <div class="col-4">
+      <h1 class="fw-bold text-white pt-2"><%= profile.name %></h3>
+      <h3 class="fw-bold text-white fst-italic"><%= profile.location %></h3>
+    </div>
+  </div>
+</div>
+<div class="container mt-5 text-white">
+  <div class="row">
+    <div class="col-4">
+      <% if (user.profile._id.toString() === profile._id.toString()) { %>
+        <a href="/profiles/<%= profile._id %>/edit">
+          <button class="btn-light btn-lg profilebtn">Edit Profile</button>
+        </a>
+        <% } %>
+    </div>
+    <div class="col-4">
+      <%= profile.bio %>
+    </div>
+  </div>
+</div>
 
-<h3 class="fw-bold text-white pt-2"><%= profile.name %>'s Collection</h3>
 
+
+
+
+
+
+<h1 class="fw-bold text-white pt-2 mt-5 proftable"><center><%= profile.name %>'s Collection</center></h1>
 
 <div class="container bg-dark" id="formdiv">
     <table class="table table-striped table-dark" id="list">
-      
       <thead>
         <tr>
           <th scope="col">Artist</th>
@@ -76,6 +97,8 @@
       </tbody>
     </table>
 </div>
+
+<h1 class="fw-bold text-white pt-2 proftable"><center><%= profile.name %>'s Wishlist</center></h1>
 
 
 <div class="container bg-dark" id="formdiv">

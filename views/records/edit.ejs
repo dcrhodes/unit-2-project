@@ -3,38 +3,44 @@
 
 <h1 class="text-white"><%= title %></h3>
 
-<div class="container bg-light" id="formdiv">
+<div class="container bg-dark text-white fs-5" id="formdiv">
     <form action="/records/<%= record._id %>?_method=PUT" method="POST">
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label">
             Artist
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-lg" name="artist" value="<%= record.artist %>">
+            <input type="text" class="form-control-lg mb-3" name="artist" value="<%= record.artist %>" style="width: 250px;">
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label">Album Title</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-lg" name="title" value="<%= record.title %>">
+            <input type="text" class="form-control-lg" name="title" value="<%= record.title %>" style="width: 250px;">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label">Album Cover</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control-lg" name="cover" value="<%= record.cover %>" style="width: 250px;">
           </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Release Year</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control-lg" name="originalYear" value="<%= record.originalYear %>">
+              <input type="text" class="form-control-lg" name="originalYear" value="<%= record.originalYear %>" style="width: 250px;">
             </div>
           </div>
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Record Label</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control-lg" name="label" value="<%= record.label %>">
+              <input type="text" class="form-control-lg" name="label" value="<%= record.label %>" style="width: 250px;">
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Genre</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control-lg" name="genre" value="<%= record.genre %>">
+              <input type="text" class="form-control-lg" name="genre" value="<%= record.genre %>" style="width: 250px;">
             </div>
           </div>
         <fieldset class="row mb-3">

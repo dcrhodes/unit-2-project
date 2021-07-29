@@ -58,7 +58,10 @@ nav {
   font-size: 20px;
 }
 
-
+.profilebtn {
+  width: 250px;
+  margin: 5px 0;
+}
 
 .remove_button_css { 
   outline: none;
@@ -67,4 +70,8 @@ nav {
   box-sizing: none; 
   background-color: transparent; 
   vertical-align: baseline;
+}
+
+.proftable {
+  margin-bottom: -100px;
 }
