@@ -42,6 +42,7 @@ function create(req, res) {
 
 function index(req, res) {
     Record.find({})
+	.populate('profile')
     .then(records => {
       res.render('records/index', {
         title: "VNL Records",

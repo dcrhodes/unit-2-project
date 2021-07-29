@@ -58,8 +58,6 @@ User Profile:
 - Multiple instances of a record can be added to a user's collection or wishlist.  I will be implementing a function to disable collection or wishlist buttons for items that are already contained in the corresponding list for each logged in user.
   
 - If multiple instances of a record exist in a collection or wishlist, removing one instance will automatically remove every instance, rather than only removing the extra unneeded instance.
-  
-- The default image in the record model does not show if a record has not been edited with a matching album cover.
 
 ## Lessons Learned:
 I learned a lot through building this application, and personally do not feel like it's a complete project yet.  I now feel comfortable with compiling a MongoDB database, recalling the information, and displaying it through EJS on a browser.  CSS styling and responsivity was a major hurdle in the UI, and will constanly be a work in progress.  I was surprised that the back-end of this application was an easier task than the front-end.  This project was meant to demonstrate back-end skills, but I found that my lack of front-end manipulation was a roadblock in implementing additional features that I am confident in creating back-end logic to accomplish.  I will definitely be seeking additional practice to increase the cohesion of my UI and server-side understanding. 

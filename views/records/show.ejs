@@ -4,7 +4,11 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-6">
+    <% if (record.cover) { %>
       <img src="<%= record.cover %> " class="img-fluid" style="width: 500px;" alt="Album Cover">
+    <% } else { %>
+      <img src="https://pngimg.com/uploads/vinyl/vinyl_PNG102.png" class="img-fluid" style="width: 500px;" alt="Album Cover">
+    <% } %> 
     </div>
     <div class="col-2">
       <h3 class="text-white">Artist:</h3>
