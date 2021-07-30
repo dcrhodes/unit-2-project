@@ -33,10 +33,28 @@
     <div class="col">
       <% if (user) { %> 
         <form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="recordId">
-          <button class="btn-light btn-lg profilebtn">Add to Collection</button><br>
+          <% if (profile.shelf.includes(record._id.toString())) { %> 
+            <button class="btn-lg profilebtn" disabled>
+              Add to Collection
+            </button><br>
+          <% } else { %>
+            <button class="btn-lg profilebtn">
+              Add to Wishlist
+            </button><br>
+          <% } %>
         </form>
         
-        <button class="btn-light btn-lg profilebtn">Add to Wishlist</button><br>
+        <form class="" action="/records/<%= record._id %>/addToWishlist" method="POST" name="recordId">
+          <% if (profile.wishlist.includes(record._id.toString())) { %>  
+            <button class="btn-lg profilebtn" disabled>
+              Add to Wishlist
+            </button><br>
+          <% } else { %>
+            <button class="btn-lg profilebtn">
+              Add to Wishlist
+            </button><br>
+          <% } %>
+        </form>
         
         <a href="/records/<%= record._id %>/edit">
             <button class="btn-light btn-lg profilebtn">Edit Record</button>
@@ -68,9 +86,6 @@
   </div>
   <% } %> 
 </div>
-
-
-
 
 <br><br><br><br><br><br><br><br><br><br>
 

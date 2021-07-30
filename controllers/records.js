@@ -211,9 +211,13 @@ function search(req, res){
 function show(req, res) {
     Record.findById(req.params.id)
     .then(record => {
-      res.render('records/show', {
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+      	res.render('records/show', {
         title: `${record.artist} - ${record.title}`,
         record,
+		profile,
+		})
       })
     })
     .catch(error => {
