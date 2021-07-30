@@ -60,16 +60,19 @@
         </td>
         <td>
           <form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="recordId">
-            <button>Collect</button><br>
+
+            <% if (profile.shelf.includes(record._id.toString())) { %>
+              <button disabled>Collect</button><br>
+            <% } else { %>
+              <button>Collect</button><br>
+            <% } %>
+
           </form>
         </td>
         <td>               
           <form class="" action="/records/<%= record._id %>/addToWishlist" method="POST" name="recordId">
 
-            <!-- if logged in user's profile -a referenced profile model- has an object in their property "shelf" array, the button is disabled or removed.  if that shelf property of model doesn't not hold a matching object, the button is enabled. -->
-            <!-- i am trying to get .includes to return a boolean value of whether or not a record._id is in the profile.shelf array.  if true, button disabled.  if false, button emabled. -->
-
-            <% if (user.profile.shelf.includes(record._id)) { %>
+            <% if (profile.wishlist.includes(record._id.toString())) { %>
               <button disabled>Wishlist</button><br>
             <% } else { %>
               <button>Wishlist</button><br>

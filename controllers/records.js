@@ -43,37 +43,48 @@ function create(req, res) {
 function index(req, res) {
     Record.find({})
 	.populate('profile')
+	.populate('shelf')
     .then(records => {
-      res.render('records/index', {
-        title: "VNL Records",
-        records,
-      })
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+			res.render('records/index', {
+				title: "VNL Records",
+				records,
+				profile,
+			})
+		})
     })
   }
 
 
 function artistClickSearch(req, res){
-	console.log(req.body)
 	Record.find({ artist: req.body.artist })
 	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-			record: results
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+			res.render('records/search', {
+			title: "Search Results",
+			record: results,
+			profile,
+		})
 		})
 	})
 	.catch(error => {
 		console.log(error)
 		res.redirect('/error')
 	})
-  }
+}
 
   function labelClickSearch(req, res){
-	console.log(req.body)
 	Record.find({ label: req.body.label })
 	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-			record: results
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+			res.render('records/search', {
+			title: "Search Results",
+			record: results,
+			profile,
+		})
 		})
 	})
 	.catch(error => {
@@ -83,43 +94,53 @@ function artistClickSearch(req, res){
   }
 
   function yearClickSearch(req, res){
-	console.log(req.body)
 	Record.find({ originalYear: req.body.originalYear })
 	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-			record: results
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+			res.render('records/search', {
+			title: "Search Results",
+			record: results,
+			profile,
+		})
 		})
 	})
 	.catch(error => {
 		console.log(error)
 		res.redirect('/error')
 	})
-  }
+}
 
   function genreClickSearch(req, res){
-	console.log(req.body)
 	Record.find({ genre: req.body.genre })
 	.then(results => {
-		console.log(results)
-		res.render('records/search', {
-			record: results
+		Profile.findById(req.user.profile._id)
+		.then(profile => {
+			res.render('records/search', {
+			title: "Search Results",
+			record: results,
+			profile,
+		})
 		})
 	})
 	.catch(error => {
 		console.log(error)
 		res.redirect('/error')
 	})
-  }
+}
 
   
 function search(req, res){
 	if (req.body.searchParam === "artist") {
 		Record.find({ artist: req.body.searchContent })
 		.then(results => {
-			console.log(results)
-			res.render('records/search', {
-			record: results
+			Profile.findById(req.user.profile._id)
+			.then(profile => {
+				res.render('records/search', {
+				title: "Search Results",
+				record: results,
+				profile,
+			})
 			})
 		})
 		.catch(error => {
@@ -129,9 +150,13 @@ function search(req, res){
 	} else if (req.body.searchParam === "title") {
 		Record.find({ title: req.body.searchContent })
 		.then(results => {
-			console.log(results)
-			res.render('records/search', {
-			record: results
+			Profile.findById(req.user.profile._id)
+			.then(profile => {
+				res.render('records/search', {
+				title: "Search Results",
+				record: results,
+				profile,
+			})
 			})
 		})
 		.catch(error => {
@@ -141,10 +166,14 @@ function search(req, res){
 	} else if (req.body.searchParam === "label") {
 		Record.find({ label: req.body.searchContent })
 		.then(results => {
-			console.log(results)
-			res.render('records/search', {
-			record: results
-		})
+			Profile.findById(req.user.profile._id)
+			.then(profile => {
+				res.render('records/search', {
+				title: "Search Results",
+				record: results,
+				profile,
+			})
+			})
 		})
 		.catch(error => {
 			console.log(error)
@@ -153,10 +182,14 @@ function search(req, res){
 	} else if (req.body.searchParam === "genre") {
 		Record.find({ genre: req.body.searchContent })
 		.then(results => {
-			console.log(results)
-			res.render('records/search', {
-			record: results
-		})
+			Profile.findById(req.user.profile._id)
+			.then(profile => {
+				res.render('records/search', {
+				title: "Search Results",
+				record: results,
+				profile,
+			})
+			})
 		})
 		.catch(error => {
 			console.log(error)
@@ -164,11 +197,6 @@ function search(req, res){
 		})
 	}
 }
-
-
-
-
-
 
   function deleteRecord(req, res) {
 	Record.findByIdAndDelete(req.params.id, function(error, record) {
@@ -179,8 +207,6 @@ function search(req, res){
 	res.redirect('/error')
 	})
 }
-
-
 
 function show(req, res) {
     Record.findById(req.params.id)
@@ -238,7 +264,7 @@ function addToCollection(req, res) {
 	  profile.wishlist.push(req.params.id)
 	  profile.save()
 	  .then(()=> {
-		res.redirect(`/profiles/${req.params.id}`)
+		res.redirect(`/records/${req.params.id}`)
 	  })
 	})
   }

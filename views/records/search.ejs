@@ -51,12 +51,19 @@
           </a></td>
           <td>
             <form class="" action="/records/<%= record._id %>/addToCollection" method="POST" name="recordId">
-              <button>Collect</button><br>
-            </form>
+              <% if (profile.shelf.includes(record._id.toString())) { %>
+                <button disabled>Collect</button><br>
+              <% } else { %>
+                <button>Collect</button><br>
+              <% } %>            </form>
         </td>
         <td>
             <form class="" action="/records/<%= record._id %>/addToWishlist" method="POST" name="recordId">
-              <button>Wishlist</button><br>
+              <% if (profile.wishlist.includes(record._id.toString())) { %>
+                <button disabled>Wishlist</button><br>
+              <% } else { %>
+                <button>Wishlist</button><br>
+              <% } %>
             </form>
         </td>
         </tr>
